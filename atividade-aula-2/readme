@@ -1,0 +1,3 @@
+Exemplo para executar o programa com 10 processos:
+
+$ make run n=10
