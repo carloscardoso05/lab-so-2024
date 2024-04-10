@@ -10,13 +10,12 @@ int main(int argc, char const *argv[])
 {
     if (argc != 3)
     {
-        puts("Insira o número de processos a serem criados e o arquivo para ser executado");
+        puts("Insira o número de processos a serem criados e o caminho do arquivo para ser executado");
         return 1;
     }
 
     int n_processes = atoi(argv[1]);
     pid_t root_pid = getpid();
-    char *file = (char *)argv[2];
 
     int i = 1;
     while (getpid() == root_pid && i < n_processes)
@@ -25,8 +24,8 @@ int main(int argc, char const *argv[])
         i++;
     }
 
-    char *args[] = {file, NULL};
-    execvp(args[0], args);
+    const char *path = argv[2];
+    execl(path, NULL);
 
     return 0;
 }
